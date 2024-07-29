@@ -22,7 +22,8 @@ in {
     enable = mkEnableOption "Install Slippi Launcher" // {default = true;};
 
     netplayVersion = mkOption {
-      default = "3.4.1";
+      # default = "3.4.1";
+      default = builtins.readlink "curl -sL https://api.github.com/repos/project-slippi/Ishiiruka/releases/latest | ${pkgs.jq}/bin/jq -r ".tag_name" | cut -c2-";
       type = types.str;
       description = "The version of Slippi Netplay to install.";
     };

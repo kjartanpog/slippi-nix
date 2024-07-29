@@ -88,7 +88,7 @@ in {
       source = "${pkgs.fetchzip {
         url = "https://github.com/project-slippi/Ishiiruka/releases/download/v${cfg.netplayVersion}/FM-Slippi-${cfg.netplayVersion}-Linux.zip";
         hash = cfg.netplayHash;
-        stripRoot = false;
+        # stripRoot = false;
       }}/Sys";
       recursive = true;
     };

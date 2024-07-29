@@ -23,11 +23,11 @@ in {
 
     netplayVersion = mkOption {
       # default = "3.4.1";
-      default = pkgs.runCommand "ishiiruka-version" {
+      default = builtins.readFile (pkgs.runCommand "ishiiruka-version" {
         nativeBuildInputs = [ pkgs.jq ];
       } ''
         curl -sL https://api.github.com/repos/project-slippi/Ishiiruka/releases/latest | jq -r ".tag_name" | cut -c2-
-      '';
+      '');
       type = types.str;
       description = "The version of Slippi Netplay to install.";
     };

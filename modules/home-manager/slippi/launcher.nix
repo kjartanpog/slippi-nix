@@ -26,7 +26,7 @@ in {
       default = builtins.readFile (pkgs.runCommand "ishiiruka-version" {
         nativeBuildInputs = with pkgs; [ curl jq ];
       } ''
-        curl -sL https://api.github.com/repos/project-slippi/Ishiiruka/releases/latest | jq -r ".tag_name" | cut -c2-
+        curl -sL https://api.github.com/repos/project-slippi/Ishiiruka/releases/latest | jq -r ".tag_name" | cut -c2- > $out
       '');
       type = types.str;
       description = "The version of Slippi Netplay to install.";

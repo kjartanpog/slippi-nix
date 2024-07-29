@@ -83,14 +83,18 @@ in {
       source = "${cfgNetplayPackage}/bin/Slippi_Online-x86_64.AppImage";
       recursive = false;
     };
-    home.file.".config/Slippi Launcher/netplay/Sys" = {
-      enable = cfg.enable;
-      source = "${pkgs.fetchzip {
+    home.file.".config/Slippi Launcher/netplay/Sys" =
+    let
+      SysDir = pkgs.fetchzip {
         url = "https://github.com/project-slippi/Ishiiruka/releases/download/v${cfg.netplayVersion}/FM-Slippi-${cfg.netplayVersion}-Linux.zip";
         hash = cfg.netplayHash;
         # stripRoot = false;
-      }}/Sys";
-      recursive = true;
+      };
+    in
+    {
+      enable = cfg.enable;
+      source = SysDir;
+      # recursive = true;
     };
     home.file.".config/Slippi Launcher/playback/Slippi_Playback-x86_64.AppImage" = {
       enable = cfg.enable;

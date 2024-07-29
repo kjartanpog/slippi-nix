@@ -90,7 +90,7 @@ in {
         hash = cfg.netplayHash;
         stripRoot = false;
       }}/Sys";
-      recursive = false;
+      recursive = true;
     };
     home.file.".config/Slippi Launcher/playback/Slippi_Playback-x86_64.AppImage" = {
       enable = cfg.enable;

@@ -22,7 +22,12 @@ in {
     enable = mkEnableOption "Install Slippi Launcher" // {default = true;};
 
     netplayVersion = mkOption {
-      default = "3.4.1";
+      default =
+        let
+          versionNumber = pkgs.runCommand "example-name" {} "echo 3.4.1 >$out";
+        in
+      builtins.readFile versionNumber;
+      # default = "3.4.1";
       # default = builtins.readFile (pkgs.runCommand "ishiiruka-version" {
       #   nativeBuildInputs = with pkgs; [ curl jq ];
       # } ''

@@ -24,7 +24,7 @@ in {
     netplayVersion = mkOption {
       default =
         let
-          versionNumber = pkgs.runCommand "example-name" {} ''${pkgs.curl}/bin/curl -sL https://api.github.com/repos/project-slippi/Ishiiruka/releases/latest | ${pkgs.jq}/bin/jq -r ".tag_name" | cut -c2- > $out'';
+          versionNumber = pkgs.runCommandLocal "example-name" {} ''${pkgs.curl}/bin/curl -sL https://api.github.com/repos/project-slippi/Ishiiruka/releases/latest | ${pkgs.jq}/bin/jq -r ".tag_name" | cut -c2- > $out'';
         in
       builtins.readFile versionNumber;
       # default = "3.4.1";

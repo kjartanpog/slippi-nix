@@ -24,7 +24,7 @@ in {
     netplayVersion = mkOption {
       # default = "3.4.1";
       default = builtins.readFile (pkgs.runCommand "ishiiruka-version" {
-        nativeBuildInputs = [ pkgs.jq ];
+        nativeBuildInputs = with pkgs; [ curl jq ];
       } ''
         curl -sL https://api.github.com/repos/project-slippi/Ishiiruka/releases/latest | jq -r ".tag_name" | cut -c2-
       '');
